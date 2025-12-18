@@ -4,10 +4,19 @@ import banner from './assets/banner.png'
 import './App.css'
 
 // no react componentes são funções
+
+function TituloFormulario(props) {
+  return (
+    <h2>{props.children}</h2>
+  )
+}
+
 function FormularioDeEventos() {
   return (
     <form className="form-evento">
-      <h2>Preencha para criar um evento: </h2>
+      <TituloFormulario>
+        Preencha para criar um evento:
+      </TituloFormulario>
       <fieldset>
         <label htmlFor="nome">Qual o nome do evento?</label>
         <input type="text" id="nome" />
