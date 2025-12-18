@@ -5,9 +5,30 @@ import './App.css'
 
 // no react componentes são funções
 
-function TituloFormulario(props) {
+// UMA DAS FORMAS DE PASSAR PROPS
+// function TituloFormulario(props) {
+//   return (
+//     <h2>{props.children}</h2>
+//   )
+// }
+// outra forma de passar props - DESESTRUTURAÇÃO
+function TituloFormulario({ children }) {
   return (
-    <h2>{props.children}</h2>
+    <h2>{children}</h2>
+  )
+}
+
+function CampoDeFormulario({ children }) {
+  return (
+    <fieldset>
+      {children}
+    </fieldset>
+  )
+}
+
+function CampoDeEntrada(props) {
+  return (
+    <input {...props}/>
   )
 }
 
@@ -17,10 +38,14 @@ function FormularioDeEventos() {
       <TituloFormulario>
         Preencha para criar um evento:
       </TituloFormulario>
-      <fieldset>
+      <CampoDeFormulario>
         <label htmlFor="nome">Qual o nome do evento?</label>
-        <input type="text" id="nome" />
-      </fieldset>
+        <CampoDeEntrada
+          type="text"
+          id="nome"
+          placeholder="Digite o nome do evento"
+        />
+      </CampoDeFormulario>
     </form>
   )
 }
