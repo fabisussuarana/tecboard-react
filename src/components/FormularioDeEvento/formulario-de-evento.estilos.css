@@ -15,4 +15,6 @@
 
 .acoes {
   margin-top: 22px;
+  display: flex;
+  justify-content: center;
 }
