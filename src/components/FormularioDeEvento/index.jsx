@@ -15,7 +15,7 @@ export default function FormularioDeEventos({ temas, aoSubmeter }) {
         // aqui estou comparando o id do tema selecionado no formulário com o id do tema da lista de temas
         return Number(formData.get('tema')) === item.id
       }),
-      data: new Date(formData.get('dataEvento')),
+      data: new Date(`${formData.get('dataEvento')}T00:00:00`),
       titulo: formData.get('nomeEvento')
     }
 
@@ -53,6 +53,7 @@ export default function FormularioDeEventos({ temas, aoSubmeter }) {
           <Label htmlFor="dataEvento">Data do evento</Label>
           <CampoDeEntrada
             type="date"
+            name="dataEvento"
             id="dataEvento"
             placeholder="Data do evento"
           />
