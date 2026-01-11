@@ -26,7 +26,7 @@ export default function FormularioDeEventos({ temas, aoSubmeter }) {
   return (
     <form className="form-evento" action={aoFormSubmetido}>
       <TituloFormulario>
-        Preencha para criar um eventooo:
+        Preencha para criar um evento:
       </TituloFormulario>
       <div className="campos">
         <CampoDeFormulario>
