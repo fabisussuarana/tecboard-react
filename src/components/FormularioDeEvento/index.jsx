@@ -6,19 +6,47 @@ import Botao from '../Botao'
 import ListaSuspensa from '../ListaSuspensa'
 import './formulario-de-evento.estilos.css'
 
-export default function FormularioDeEventos() {
+export default function FormularioDeEventos({ temas, aoSubmeter }) {
+  function aoFormSubmetido(formData) {
+    const evento = {
+      capa: formData.get('capa'),
+      // usando a função find do js pra procurar o tema selecionado na lista de temas
+      tema: temas.find(function (item) {
+        // aqui estou comparando o id do tema selecionado no formulário com o id do tema da lista de temas
+        return Number(formData.get('tema')) === item.id
+      }),
+      data: new Date(formData.get('dataEvento')),
+      titulo: formData.get('nomeEvento')
+    }
+
+    console.log('Evento criado no FormularioDeEvento:', evento)
+
+    // função que foi passada via props lá do componente pai (App.jsx)
+    aoSubmeter(evento);
+  }
+
   return (
-    <form className="form-evento">
+    <form className="form-evento" action={aoFormSubmetido}>
       <TituloFormulario>
         Preencha para criar um evento:
       </TituloFormulario>
       <div className="campos">
         <CampoDeFormulario>
-          <Label htmlFor="nome">Qual o nome do evento?</Label>
+          <Label htmlFor="nomeEvento">Qual o nome do evento?</Label>
           <CampoDeEntrada
             type="text"
-            id="nome"
+            id="nomeEvento"
+            name="nomeEvento"
             placeholder="Digite o nome do evento"
+          />
+        </CampoDeFormulario>
+        <CampoDeFormulario>
+          <Label htmlFor="capa">Qual o endereço da capa do evento?</Label>
+          <CampoDeEntrada
+            type="text"
+            id="capa"
+            name="capa"
+            placeholder="http://..."
           />
         </CampoDeFormulario>
         <CampoDeFormulario>
@@ -31,7 +59,7 @@ export default function FormularioDeEventos() {
         </CampoDeFormulario>
         <CampoDeFormulario>
           <Label htmlFor="dataEvento">Tema do evento</Label>
-          <ListaSuspensa/>
+          <ListaSuspensa id="tema" name="tema" itens={temas}/>
         </CampoDeFormulario>
         <div className="acoes">
           <Botao>

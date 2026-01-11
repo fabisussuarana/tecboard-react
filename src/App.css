@@ -4,3 +4,15 @@ header {
   display: flex;
   justify-content: center;
 }
+.container {
+  width: 1000px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.eventos {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
