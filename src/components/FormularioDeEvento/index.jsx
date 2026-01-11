@@ -19,8 +19,6 @@ export default function FormularioDeEventos({ temas, aoSubmeter }) {
       titulo: formData.get('nomeEvento')
     }
 
-    console.log('Evento criado no FormularioDeEvento:', evento)
-
     // função que foi passada via props lá do componente pai (App.jsx)
     aoSubmeter(evento);
   }
